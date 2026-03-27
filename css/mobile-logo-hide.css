@@ -1,0 +1,118 @@
+/* CSS específico para ocultar logo en móviles pequeños - Máxima prioridad */
+/* Este archivo debe cargarse al final para sobrescribir todos los estilos */
+
+/* Regla global para 375px y menos */
+@media screen and (max-width: 375px),
+       screen and (max-device-width: 375px),
+       (max-width: 375px) {
+    /* Ocultar logo con máxima especificidad posible */
+    html body .header-banner header div.logo.slide-up,
+    html body .header-banner header .logo.slide-up,
+    body .header-banner header div.logo.slide-up,
+    body .header-banner header .logo.slide-up,
+    html body .header-banner header div.logo,
+    html body .header-banner header .logo,
+    body .header-banner header div.logo,
+    body .header-banner header .logo,
+    html body header div.logo.slide-up,
+    html body header .logo.slide-up,
+    body header div.logo.slide-up,
+    body header .logo.slide-up {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        animation: none !important;
+        transform: none !important;
+        z-index: -9999 !important;
+        pointer-events: none !important;
+        clip: rect(0, 0, 0, 0) !important;
+    }
+    
+    /* Ocultar imagen del logo */
+    html body .header-banner header div.logo.slide-up img,
+    html body .header-banner header .logo.slide-up img,
+    html body .header-banner header div.logo img,
+    html body .header-banner header .logo img,
+    html body .header-banner header .logo-empresa,
+    body .header-banner header div.logo.slide-up img,
+    body .header-banner header .logo.slide-up img,
+    body .header-banner header div.logo img,
+    body .header-banner header .logo img,
+    body .header-banner header .logo-empresa {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        animation: none !important;
+        transform: none !important;
+        pointer-events: none !important;
+        clip: rect(0, 0, 0, 0) !important;
+    }
+    
+    /* Ocultar enlace del logo */
+    html body .header-banner header div.logo.slide-up a,
+    html body .header-banner header .logo.slide-up a,
+    html body .header-banner header div.logo a,
+    html body .header-banner header .logo a,
+    html body .header-banner header a.enlace.empresa,
+    body .header-banner header div.logo.slide-up a,
+    body .header-banner header .logo.slide-up a,
+    body .header-banner header div.logo a,
+    body .header-banner header .logo a,
+    body .header-banner header a.enlace.empresa {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        animation: none !important;
+        transform: none !important;
+        pointer-events: none !important;
+        clip: rect(0, 0, 0, 0) !important;
+    }
+    
+    /* Regla adicional usando selector universal para asegurar ocultación */
+    * .header-banner * .logo,
+    * .header-banner * div.logo,
+    * header * .logo,
+    * header * div.logo {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        animation: none !important;
+        transform: none !important;
+        z-index: -9999 !important;
+        pointer-events: none !important;
+    }
+}
+
