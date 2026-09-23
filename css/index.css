@@ -58,7 +58,7 @@ body, html {
     height: 100%;
     width: 100%;
     font-family: "Poppins", sans-serif;
-    background-color: #FDF4E3;
+    background-color: #ffffff;
 }
 
 /* ===== HERO SECTION & NAVBAR V2 ===== */
@@ -760,7 +760,7 @@ nav ul li a.active {
 }
 
 .quienes-somos {
-    background: #FDF4E3;
+    background: #ffffff;
     padding: 100px 0;
     position: relative;
     overflow: hidden;
@@ -1001,7 +1001,7 @@ nav ul li a.active {
 }
 
 .doctores-section {
-    background: #FDF4E3;
+    background: #ffffff;
     padding: 100px 0;
     position: relative;
     overflow: hidden;
@@ -1173,7 +1173,7 @@ nav ul li a.active {
 }
 
 .testimonios-section {
-    background: #FDF4E3;
+    background: #ffffff;
     padding: 100px 0;
     position: relative;
     overflow: hidden;
@@ -1365,7 +1365,7 @@ nav ul li a.active {
     transform: scale(1.2);
 }
 .Nuestra_Experiencia {
-    background: #FDF4E3;
+    background: #ffffff;
     padding: 80px 0;
     position: relative;
     overflow: hidden;
@@ -1544,7 +1544,7 @@ nav ul li a.active {
 
 
 body {
-    background: #FDF4E3;
+    background: #ffffff;
 }
 
 /* Footer Styles */
