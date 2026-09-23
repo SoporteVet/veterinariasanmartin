@@ -218,6 +218,16 @@ body, html {
     position: relative;
 }
 
+/* Evita que logo y título se amontonen si Swiper/CSS externo no carga */
+.hero-section:not(.guide-hero) .hero-carousel .swiper-wrapper,
+.hero-section:not(.guide-hero) .hero-carousel .swiper-slide {
+    min-height: 100vh;
+}
+
+.hero-section:not(.guide-hero) .hero-slide-content {
+    padding-top: max(160px, calc(88px + 72px));
+}
+
 .hero-carousel .swiper-slide {
     height: 100%;
 }
