@@ -1,0 +1,647 @@
+/* Páginas internas: Servicios, Consejos, Contacto — alineado con inicio + Paper Ground */
+
+:root {
+    --paper: #fdf4e3;
+    --ink: #1a2838;
+    --ink-muted: #5c6b7a;
+    --brand: #1a6fd4;
+    --accent: #54c8f0;
+    --card: #ffffff;
+    --line: rgba(26, 40, 56, 0.08);
+    --shadow-soft: 0 14px 40px rgba(26, 40, 56, 0.07);
+}
+
+/* —— Hero / banner (misma altura que inicio: pantalla completa) —— */
+body.page-servicios .header-banner,
+body.page-consejos .header-banner,
+body.page-contacto .header-banner {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+}
+
+body.page-servicios .header-banner .banner,
+body.page-consejos .header-banner .banner,
+body.page-contacto .header-banner .banner {
+    min-height: 100vh;
+    min-height: 100svh;
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 640px;
+    margin-top: 0 !important;
+    padding: 132px 48px 96px 72px !important;
+    box-sizing: border-box;
+    background-color: #1a6fd4;
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-attachment: scroll !important;
+    align-items: center;
+    justify-content: center;
+}
+
+body.page-servicios .header-banner .banner {
+    background-image: url("../img/familia.jpg");
+    background-position: right center;
+}
+
+body.page-consejos .header-banner .banner {
+    background-image: url("../img/Consejos.png");
+    background-position: center;
+}
+
+body.page-contacto .header-banner .banner {
+    background-image: url("../img/profesional.jpg");
+    background-position: 70% 30%;
+}
+
+body.page-servicios .header-banner .banner::before,
+body.page-consejos .header-banner .banner::before,
+body.page-contacto .header-banner .banner::before {
+    background: linear-gradient(
+        105deg,
+        rgba(8, 22, 45, 0.68) 0%,
+        rgba(8, 22, 45, 0.4) 40%,
+        rgba(8, 22, 45, 0.18) 68%,
+        rgba(8, 22, 45, 0.1) 100%
+    );
+}
+
+body.page-servicios .header-banner .banner::after,
+body.page-consejos .header-banner .banner::after,
+body.page-contacto .header-banner .banner::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.22) 100%);
+}
+
+body.page-servicios .header-banner .banner .content-banner,
+body.page-consejos .header-banner .banner .content-banner,
+body.page-contacto .header-banner .banner .content-banner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    margin: 0 auto !important;
+    max-width: 720px;
+    width: 100%;
+    text-align: center !important;
+    box-sizing: border-box;
+}
+
+body.page-servicios .header-banner .banner .content-banner .banner-heading,
+body.page-consejos .header-banner .banner .content-banner .banner-heading,
+body.page-contacto .header-banner .banner .content-banner .banner-heading {
+    margin: 0 0 22px !important;
+}
+
+body.page-servicios .header-banner .banner .content-banner .banner-label,
+body.page-consejos .header-banner .banner .content-banner .banner-label,
+body.page-contacto .header-banner .banner .content-banner .banner-label {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center !important;
+    margin: 0 auto 12px !important;
+}
+
+body.page-servicios .header-banner .banner .content-banner .banner-divider,
+body.page-consejos .header-banner .banner .content-banner .banner-divider,
+body.page-contacto .header-banner .banner .content-banner .banner-divider {
+    margin: 0 auto 28px !important;
+}
+
+body.page-servicios .header-banner .banner .content-banner .banner-features,
+body.page-consejos .header-banner .banner .content-banner .banner-features,
+body.page-contacto .header-banner .banner .content-banner .banner-features {
+    justify-content: center !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 4px;
+    margin-bottom: 36px !important;
+}
+
+body.page-servicios .header-banner .banner .content-banner .banner-description,
+body.page-consejos .header-banner .banner .content-banner .banner-description,
+body.page-contacto .header-banner .banner .content-banner .banner-description {
+    margin: 0 auto 32px !important;
+    text-align: center;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.7;
+    letter-spacing: 0;
+}
+
+body.page-consejos .header-banner .banner .content-banner .banner-description {
+    font-size: 17px !important;
+    max-width: 680px;
+}
+
+body.page-servicios .header-banner .banner .content-banner .banner-cta,
+body.page-consejos .header-banner .banner .content-banner .banner-cta,
+body.page-contacto .header-banner .banner .content-banner .banner-cta {
+    margin-top: 8px;
+}
+
+body.page-servicios .banner .content-banner p.banner-description,
+body.page-consejos .banner .content-banner p.banner-description,
+body.page-contacto .banner .content-banner p.banner-description {
+    font-family: "Poppins", sans-serif !important;
+    font-size: inherit !important;
+    font-weight: 400 !important;
+    margin: inherit;
+}
+
+body.page-servicios .banner .content-banner p,
+body.page-consejos .banner .content-banner p,
+body.page-contacto .banner .content-banner p {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    margin: inherit;
+}
+
+/* —— Encabezados de sección —— */
+.services-header,
+.services-header .titulo,
+.section-title,
+.contact-section > .contact-container > .section-title {
+    text-align: center;
+}
+
+.titulo,
+.section-title {
+    color: var(--ink) !important;
+    font-size: clamp(1.65rem, 3.2vw, 2.15rem) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px !important;
+}
+
+.titulo::after,
+.section-title::after {
+    width: 52px !important;
+    height: 3px !important;
+    background: var(--brand) !important;
+    border-radius: 999px;
+}
+
+.services-subtitle,
+.section-subtitle {
+    color: var(--ink-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title i {
+    color: var(--brand) !important;
+    font-size: 1.35rem !important;
+}
+
+/* —— Servicios —— */
+.Servicios {
+    padding: 72px 20px 88px;
+    background: var(--paper);
+}
+
+.contenedor {
+    width: min(1120px, 100%);
+}
+
+.Servicios-port {
+    gap: 24px;
+}
+
+.service-card {
+    min-height: 0;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(26, 111, 212, 0.12);
+    border-color: rgba(26, 111, 212, 0.22);
+}
+
+.service-image-wrapper {
+    height: 200px;
+}
+
+.service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--brand);
+    box-shadow: none;
+}
+
+.service-card:hover .service-icon {
+    transform: none;
+}
+
+.service-name {
+    font-size: 1.2rem;
+    color: var(--ink);
+}
+
+.service-card:hover .service-name {
+    color: var(--brand);
+}
+
+.service-overlay {
+    background: rgba(26, 111, 212, 0.55);
+}
+
+.service-modal-content {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+}
+
+.service-modal-body .btn-primary {
+    background: var(--brand);
+}
+
+/* —— Consejos —— */
+.quick-tips-section,
+.main-advice-section,
+.stories-section,
+.additional-info-section {
+    background: var(--paper);
+    padding: 72px 0;
+}
+
+.quick-tips-grid,
+.detailed-advice-grid {
+    gap: 24px;
+}
+
+body.page-consejos .quick-tips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+body.page-consejos .quick-tips-grid .quick-tip-card {
+    flex: 0 1 min(280px, calc(50% - 12px));
+    max-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1100px) {
+    body.page-consejos .quick-tips-grid .quick-tip-card {
+        flex: 0 1 calc(25% - 18px);
+        max-width: calc(25% - 18px);
+    }
+}
+
+.quick-tip-card,
+.advice-card,
+.info-card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.quick-tip-card:hover,
+.advice-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(26, 111, 212, 0.1);
+}
+
+.tip-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--brand);
+    font-size: 1.35rem;
+}
+
+.quick-tip-card h3,
+.advice-title {
+    color: var(--ink);
+    -webkit-text-fill-color: unset;
+    background: none;
+}
+
+.advice-category {
+    background: var(--brand);
+    border-radius: 999px;
+}
+
+.category-card,
+.story-card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+body.page-consejos .categories-section .section-title,
+body.page-consejos .categories-section .section-title i {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
+}
+
+body.page-consejos .categories-grid {
+    align-items: stretch;
+}
+
+body.page-consejos .category-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.page-consejos .category-icon {
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
+}
+
+body.page-consejos .category-card h3 {
+    color: #ffffff;
+    min-height: 2.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.25;
+    width: 100%;
+}
+
+body.page-consejos .category-card ul {
+    width: min(100%, 268px);
+    margin: 0 auto;
+    padding: 0;
+}
+
+body.page-consejos .category-card ul li {
+    display: grid;
+    grid-template-columns: 1.15em minmax(0, 1fr);
+    column-gap: 8px;
+    align-items: start;
+    text-align: left;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.95);
+    box-sizing: border-box;
+}
+
+body.page-consejos .category-card ul li::before {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 2px 0 0;
+    color: #ffffff;
+    justify-self: start;
+}
+
+/* —— Contacto —— */
+.contact-section,
+.map-section,
+.social-section {
+    background: var(--paper);
+}
+
+.contact-section {
+    padding: 72px 20px;
+}
+
+.contact-container {
+    max-width: 1120px;
+    gap: 40px;
+}
+
+.info-card,
+.contact-form-section {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.info-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--brand);
+    font-size: 1.35rem;
+}
+
+.info-card h3 {
+    color: var(--ink);
+}
+
+body.page-contacto .contact-info-section > .section-title,
+body.page-contacto .contact-form-section > .section-title {
+    margin-bottom: 44px !important;
+    padding-bottom: 8px;
+}
+
+body.page-contacto .contact-info-section .info-cards {
+    margin-top: 16px;
+    gap: 28px;
+}
+
+body.page-contacto .contact-form-section .contact-form {
+    margin-top: 16px;
+}
+
+body.page-contacto .info-card {
+    padding: 32px 28px 36px;
+}
+
+body.page-contacto .info-card .info-icon {
+    margin-bottom: 18px;
+}
+
+body.page-contacto .info-card h3 {
+    margin: 0 0 16px !important;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+body.page-contacto .info-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+body.page-contacto .info-line {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--ink-muted);
+}
+
+body.page-contacto .info-line a {
+    color: var(--brand);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+body.page-contacto .info-line a:hover {
+    text-decoration: underline;
+}
+
+.info-card a {
+    color: var(--brand);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(26, 111, 212, 0.15);
+}
+
+.submit-btn,
+.map-btn {
+    background: var(--brand);
+    border-radius: 999px;
+}
+
+.map-section {
+    padding: 64px 20px;
+}
+
+.map-section > .section-title {
+    margin-bottom: 44px !important;
+    padding-bottom: 8px;
+}
+
+.map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-soft);
+    margin-top: 16px;
+}
+
+.social-section {
+    padding: 64px 20px 80px;
+    border-top: 1px solid var(--line);
+}
+
+.social-section > .section-title {
+    margin-bottom: 44px !important;
+    padding-bottom: 8px;
+}
+
+.social-section .social-links-container {
+    margin-top: 16px;
+}
+
+.social-link {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--card);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Horarios en tarjeta de contacto */
+body.page-contacto .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+body.page-contacto .hours-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+body.page-contacto .hours-label,
+body.page-contacto .hours-time {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.35;
+}
+
+body.page-contacto .hours-label {
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+body.page-contacto .hours-time {
+    color: var(--ink-muted);
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    body.page-servicios .header-banner .banner,
+    body.page-consejos .header-banner .banner,
+    body.page-contacto .header-banner .banner {
+        min-height: 100svh;
+        height: 100svh !important;
+        padding: 108px 24px 120px !important;
+        background-size: cover;
+        background-position: 76% center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body.page-servicios .header-banner .banner {
+        background-position: 72% center;
+    }
+
+    body.page-consejos .header-banner .banner {
+        background-position: 55% center;
+    }
+
+    body.page-contacto .header-banner .banner {
+        background-position: 38% center;
+    }
+
+    body.page-servicios .header-banner .banner .content-banner,
+    body.page-consejos .header-banner .banner .content-banner,
+    body.page-contacto .header-banner .banner .content-banner {
+        max-width: 100%;
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+    }
+
+    .Servicios,
+    .quick-tips-section,
+    .main-advice-section,
+    .contact-section {
+        padding-top: 56px;
+        padding-bottom: 64px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+        padding: 28px 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .quick-tip-card,
+    .advice-card,
+    .info-card {
+        transition: none;
+    }
+}

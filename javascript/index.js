@@ -138,6 +138,40 @@ if (testimonioCards.length > 0) {
     showTestimonio(0);
 }
 
+// Hero Carousel Swiper
+const heroSwiperEl = document.querySelector('.hero-swiper');
+if (heroSwiperEl) {
+    new Swiper('.hero-swiper', {
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        loop: true,
+        speed: 900,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        pagination: {
+            el: '.hero-swiper-pagination',
+            clickable: true,
+        },
+    });
+}
+
+// Navbar scroll effect
+const navbarV2 = document.querySelector('.navbar-v2');
+const scrollSection = document.querySelector('.hero-section') || document.querySelector('.header-banner');
+if (navbarV2 && scrollSection) {
+    const onScroll = () => {
+        const threshold = scrollSection.classList.contains('hero-section')
+            ? scrollSection.offsetHeight - 80
+            : 80;
+        navbarV2.classList.toggle('scrolled', window.scrollY > threshold);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+}
+
 // Swiper Configuration
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 1, // Default to 1 for mobile-first

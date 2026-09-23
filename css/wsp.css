@@ -1,9 +1,14 @@
-.btn-wsp {
+.contact-fab {
     position: fixed;
     bottom: 20px;
-    right: 35px;
+    right: 20px;
+    z-index: 99998;
+}
+
+.contact-fab-toggle {
     background-color: #25d366;
-    color: white;
+    color: #ffffff;
+    border: none;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -11,42 +16,125 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.25s, visibility 0.25s;
     animation: float 3s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-.btn-wsp:hover {
+.contact-fab-toggle:hover {
     animation: floatHover 2s ease-in-out infinite;
     box-shadow: 0 8px 16px rgba(37, 211, 102, 0.5);
 }
 
-@keyframes floatHover {
-    0%, 100% {
-        transform: translateY(0px) scale(1.1);
-    }
-    50% {
-        transform: translateY(-20px) scale(1.1);
-    }
-}
-
-.btn-wsp svg {
+.contact-fab-toggle svg {
     width: 30px;
     height: 30px;
 }
-@media only screen and (min-width:320px) and (max-width:768px){
-    .btn-wsp{
-        width:63px;
-        height:63px;
-        line-height: 66px;
-	}
+
+.contact-fab-menu {
+    position: absolute;
+    bottom: 72px;
+    right: 0;
+    min-width: 210px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.96);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+.contact-fab.is-open .contact-fab-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.contact-fab-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #1a2b40;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: left;
+}
+
+.contact-fab-option:hover {
+    background: #f0f7ff;
+}
+
+.contact-fab-option i {
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.contact-fab-option--whatsapp i {
+    color: #25d366;
+}
+
+.contact-fab-option--bot i {
+    color: #4dbce9;
+}
+
+/* Ocultar launcher de Martina (se abre desde el menú) */
+#martina-chat-launcher {
+    display: none !important;
+}
+
+#martina-chat-panel.is-open {
+    bottom: 92px !important;
+    right: 20px !important;
+}
+
+body:has(#martina-chat-panel.is-open) .contact-fab {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes floatHover {
+    0%, 100% { transform: translateY(0) scale(1.1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .contact-fab {
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .contact-fab-toggle {
+        width: 63px;
+        height: 63px;
+    }
+
+    .contact-fab-menu {
+        bottom: 76px;
+        min-width: 200px;
+    }
+
+    #martina-chat-panel.is-open {
+        bottom: 88px !important;
+        right: 16px !important;
+    }
 }

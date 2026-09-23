@@ -41,6 +41,7 @@ body, html {
     height: 100%;
     width: 100%;
     font-family: "Poppins", sans-serif;
+    background-color: #FDF4E3;
 }
 
 header {
@@ -406,7 +407,7 @@ nav ul li a.active {
 }
 body {
     margin: 0;
-    background-color: #efefef;
+    background-color: #FDF4E3;
     color: #eee;
     font-family: Poppins, sans-serif;
     font-size: 12px;
@@ -696,7 +697,7 @@ a {
 }
 .historias {
     padding: 20px;
-    background-color: #efefef; 
+    background-color: #FDF4E3; 
 }
 
 .titulo-principal {
@@ -1129,7 +1130,7 @@ html, body {
 /* Sección de Tips Rápidos */
 .quick-tips-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #FDF4E3;
 }
 
 .section-title {
@@ -1200,7 +1201,7 @@ html, body {
 /* Sección de Consejos Principales - Grid de Tarjetas */
 .main-advice-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: #FDF4E3;
 }
 
 .detailed-advice-grid {
@@ -1388,7 +1389,7 @@ html, body {
 /* Sección de Anécdotas mejorada */
 .stories-section {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #FDF4E3;
 }
 
 .section-subtitle {
@@ -1459,7 +1460,7 @@ html, body {
 /* Sección de Información Adicional */
 .additional-info-section {
     padding: 80px 0;
-    background: #fff;
+    background: #FDF4E3;
 }
 
 .info-cards {

@@ -1,0 +1,619 @@
+/* Widget de contacto — Veterinaria San Martín de Porres */
+.dog-contact {
+    --dog-contact-blue: #1a6fd4;
+    --dog-contact-blue-dark: #1256a8;
+    --dog-contact-cyan: #54c8f0;
+    --dog-contact-ink: #17324d;
+    --dog-contact-muted: #587086;
+    --dog-contact-white: #ffffff;
+    position: fixed;
+    right: clamp(12px, 1.6vw, 24px);
+    bottom: 0;
+    z-index: 99998;
+    width: 148px;
+    height: 160px;
+    color: var(--dog-contact-ink);
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    isolation: isolate;
+    pointer-events: none;
+    transition:
+        opacity 180ms ease,
+        visibility 180ms ease,
+        transform 180ms ease;
+}
+
+.dog-contact__dog,
+.dog-contact__speech-bubble,
+.dog-contact__speech-action,
+.dog-contact__speech-close,
+.dog-contact__card,
+.dog-contact__card-close,
+.dog-contact__action {
+    box-sizing: border-box;
+}
+
+.dog-contact__dog {
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    display: block;
+    width: 148px;
+    height: 159px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 42% 42% 12px 12px;
+    background: transparent;
+    color: inherit;
+    line-height: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dog-contact__dog--jump {
+    transform-origin: 50% 100%;
+    animation: hop 5.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s infinite;
+}
+
+.dog-contact__illustration {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    transform-origin: 50% 100%;
+    animation: peekIn 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dog-contact__tail {
+    transform-box: fill-box;
+    transform-origin: 8% 60%;
+    will-change: transform;
+}
+
+.dog-contact__tail--wag {
+    animation: tailWag 820ms ease-in-out 500ms infinite;
+}
+
+.dog-contact__head {
+    transform-box: fill-box;
+    transform-origin: 50% 82%;
+}
+
+.dog-contact__head--tilt {
+    transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dog-contact__dog:hover .dog-contact__head--tilt {
+    transform: rotate(-6deg) translateY(1px);
+}
+
+.dog-contact__ear {
+    transform-box: fill-box;
+    will-change: transform;
+}
+
+.dog-contact__ear--left {
+    --dog-contact-ear-angle: 7deg;
+    --dog-contact-ear-rebound: -3deg;
+    --dog-contact-ear-settle: 2deg;
+    transform-origin: 82% 28%;
+    animation: earTwitch 6.2s ease-in-out 1.8s infinite;
+}
+
+.dog-contact__ear--right {
+    --dog-contact-ear-angle: -7deg;
+    --dog-contact-ear-rebound: 3deg;
+    --dog-contact-ear-settle: -2deg;
+    transform-origin: 18% 28%;
+    animation: earTwitch 6.2s ease-in-out 2.02s infinite;
+}
+
+.dog-contact__eyes {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+}
+
+.dog-contact__eyes--blink {
+    animation: blink 5.1s ease-in-out 1s infinite;
+}
+
+.dog-contact__paw-tag {
+    filter: drop-shadow(0 1px 1px rgba(10, 53, 102, 0.24));
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.dog-contact__speech-bubble {
+    position: absolute;
+    right: 110px;
+    bottom: 112px;
+    display: flex;
+    width: 202px;
+    min-height: 76px;
+    overflow: visible;
+    border: 1px solid rgba(26, 111, 212, 0.16);
+    border-radius: 18px 18px 6px 18px;
+    background: var(--dog-contact-white);
+    box-shadow:
+        0 14px 34px rgba(12, 58, 99, 0.17),
+        0 3px 9px rgba(12, 58, 99, 0.08);
+    pointer-events: auto;
+    transform-origin: 100% 100%;
+    animation: peekIn 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+        opacity 160ms ease,
+        visibility 160ms ease,
+        transform 160ms ease;
+}
+
+.dog-contact__speech-bubble::before {
+    position: absolute;
+    right: -13px;
+    bottom: -1px;
+    width: 25px;
+    height: 25px;
+    border-right: 1px solid rgba(26, 111, 212, 0.16);
+    border-bottom: 1px solid rgba(26, 111, 212, 0.16);
+    border-bottom-right-radius: 6px;
+    background: var(--dog-contact-white);
+    content: "";
+    transform: skewX(-28deg) rotate(7deg);
+    transform-origin: 0 100%;
+}
+
+.dog-contact.is-open .dog-contact__speech-bubble {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(8px, 8px) scale(0.96);
+}
+
+.dog-contact__speech-action {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 74px;
+    margin: 0;
+    padding: 13px 4px 12px 16px;
+    border: 0;
+    border-radius: 17px 0 0 17px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dog-contact__speech-greeting,
+.dog-contact__speech-cta {
+    display: block;
+}
+
+.dog-contact__speech-greeting {
+    color: var(--dog-contact-ink);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.dog-contact__speech-cta {
+    margin-top: 2px;
+    color: var(--dog-contact-blue);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.dog-contact__speech-close {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    flex: 0 0 38px;
+    width: 38px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 2px 22px 0;
+    border: 0;
+    border-radius: 0 17px 0 0;
+    background: transparent;
+    color: #6c8193;
+    font: inherit;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    place-items: center;
+}
+
+.dog-contact__speech-action:hover {
+    background: rgba(84, 200, 240, 0.08);
+}
+
+.dog-contact__speech-close:hover,
+.dog-contact__card-close:hover {
+    background: rgba(26, 111, 212, 0.09);
+    color: var(--dog-contact-blue-dark);
+}
+
+.dog-contact__card {
+    position: absolute;
+    right: 0;
+    bottom: 153px;
+    display: block;
+    width: min(358px, calc(100vw - 28px));
+    max-height: calc(100dvh - 174px);
+    padding: 22px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid rgba(26, 111, 212, 0.14);
+    border-radius: 22px;
+    background:
+        linear-gradient(135deg, rgba(84, 200, 240, 0.11), transparent 38%),
+        var(--dog-contact-white);
+    box-shadow:
+        0 24px 64px rgba(10, 53, 102, 0.22),
+        0 6px 18px rgba(10, 53, 102, 0.11);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(14px) scale(0.97);
+    transform-origin: calc(100% - 68px) 100%;
+    transition:
+        opacity 190ms ease,
+        visibility 190ms ease,
+        transform 190ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dog-contact__card[hidden] {
+    display: none;
+}
+
+.dog-contact__card.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    animation: peekIn 230ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dog-contact__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.dog-contact__card-header > div {
+    min-width: 0;
+}
+
+.dog-contact__card-title {
+    margin: 0;
+    color: var(--dog-contact-ink);
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.dog-contact__card-subtitle {
+    max-width: 270px;
+    margin: 7px 0 0;
+    color: var(--dog-contact-muted);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 400;
+    line-height: 1.55;
+}
+
+.dog-contact__card-close {
+    display: grid;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    margin: -5px -5px 0 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(26, 111, 212, 0.055);
+    color: #557086;
+    font: inherit;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    place-items: center;
+    transition:
+        background-color 150ms ease,
+        color 150ms ease,
+        transform 150ms ease;
+}
+
+.dog-contact__card-close:active {
+    transform: scale(0.94);
+}
+
+.dog-contact__card-actions {
+    display: grid;
+    gap: 11px;
+    margin-top: 19px;
+}
+
+.dog-contact__action {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    margin: 0;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    color: var(--dog-contact-white);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    gap: 12px;
+    transition:
+        background-color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
+}
+
+.dog-contact__action--whatsapp {
+    border-color: #0f753d;
+    background: #137f45;
+    box-shadow: 0 7px 18px rgba(19, 127, 69, 0.22);
+}
+
+.dog-contact__action--whatsapp:hover {
+    background: #0f713c;
+    box-shadow: 0 9px 22px rgba(19, 127, 69, 0.28);
+    transform: translateY(-1px);
+}
+
+.dog-contact__action--martina {
+    border-color: var(--dog-contact-blue-dark);
+    background: var(--dog-contact-blue);
+    box-shadow: 0 7px 18px rgba(26, 111, 212, 0.24);
+}
+
+.dog-contact__action--martina:hover {
+    background: var(--dog-contact-blue-dark);
+    box-shadow: 0 9px 22px rgba(26, 111, 212, 0.3);
+    transform: translateY(-1px);
+}
+
+.dog-contact__action:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.dog-contact__action-icon {
+    display: grid;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--dog-contact-white);
+    font-size: 20px;
+    line-height: 1;
+    place-items: center;
+}
+
+.dog-contact__action--martina .dog-contact__action-icon {
+    background: rgba(84, 200, 240, 0.27);
+}
+
+.dog-contact__dog:focus-visible,
+.dog-contact__speech-action:focus-visible,
+.dog-contact__speech-close:focus-visible,
+.dog-contact__card-close:focus-visible,
+.dog-contact__action:focus-visible {
+    outline: 3px solid #083a70;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--dog-contact-white);
+}
+
+body.dog-contact-mounted #martina-chat-launcher {
+    display: none !important;
+}
+
+#martina-chat-panel.is-open {
+    right: 20px !important;
+    bottom: 92px !important;
+}
+
+body:has(#martina-chat-panel.is-open) .dog-contact {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(12px);
+}
+
+@keyframes tailWag {
+    0%,
+    100% {
+        transform: rotate(-8deg);
+    }
+
+    50% {
+        transform: rotate(12deg);
+    }
+}
+
+@keyframes earTwitch {
+    0%,
+    86%,
+    100% {
+        transform: rotate(0);
+    }
+
+    89% {
+        transform: rotate(var(--dog-contact-ear-angle));
+    }
+
+    92% {
+        transform: rotate(var(--dog-contact-ear-rebound));
+    }
+
+    95% {
+        transform: rotate(var(--dog-contact-ear-settle));
+    }
+}
+
+@keyframes blink {
+    0%,
+    43%,
+    47%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    45% {
+        transform: scaleY(0.08);
+    }
+}
+
+@keyframes peekIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.015);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes hop {
+    0%,
+    76%,
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+
+    80% {
+        transform: translateY(3px) scaleY(0.97);
+    }
+
+    84% {
+        transform: translateY(-9px) scaleY(1.02);
+    }
+
+    88% {
+        transform: translateY(0) scaleY(0.985);
+    }
+
+    91% {
+        transform: translateY(-3px) scaleY(1.008);
+    }
+
+    94% {
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .dog-contact {
+        right: max(8px, env(safe-area-inset-right));
+        width: 132px;
+        height: 143px;
+    }
+
+    .dog-contact__dog {
+        width: 132px;
+        height: 142px;
+    }
+
+    .dog-contact__speech-bubble {
+        right: 98px;
+        bottom: 100px;
+        width: min(188px, calc(100vw - 124px));
+        min-height: 72px;
+    }
+
+    .dog-contact__speech-action {
+        min-height: 70px;
+        padding-left: 14px;
+    }
+
+    .dog-contact__speech-greeting {
+        font-size: 12px;
+    }
+
+    .dog-contact__speech-cta {
+        font-size: 14px;
+    }
+
+    .dog-contact__card {
+        right: 0;
+        bottom: 134px;
+        width: calc(100vw - 20px);
+        max-height: calc(100dvh - 151px);
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .dog-contact__card-title {
+        font-size: 20px;
+    }
+
+    .dog-contact__card-subtitle {
+        font-size: 13px;
+    }
+
+    .dog-contact__action {
+        min-height: 58px;
+        padding: 9px 12px;
+        font-size: 13.5px;
+        gap: 10px;
+    }
+
+    #martina-chat-panel.is-open {
+        right: 16px !important;
+        bottom: 16px !important;
+        top: auto !important;
+        width: calc(100vw - 32px) !important;
+        height: calc(100dvh - 32px) !important;
+        max-height: calc(100dvh - 32px) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dog-contact,
+    .dog-contact__dog--jump,
+    .dog-contact__illustration,
+    .dog-contact__tail--wag,
+    .dog-contact__head--tilt,
+    .dog-contact__ear--left,
+    .dog-contact__ear--right,
+    .dog-contact__eyes--blink,
+    .dog-contact__speech-bubble,
+    .dog-contact__card,
+    .dog-contact__card-close,
+    .dog-contact__action {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .dog-contact__dog:hover .dog-contact__head--tilt,
+    .dog-contact__action:hover {
+        transform: none;
+    }
+}

@@ -63,6 +63,7 @@ body, html {
     height: 100%;
     width: 100%;
     font-family: "Poppins", sans-serif;
+    background-color: #FDF4E3;
 }
 
 header {
@@ -421,7 +422,7 @@ nav ul li a.active {
 
 .Servicios {
     padding: 80px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #FDF4E3;
     min-height: 100vh;
 }
 
