@@ -1,7 +1,7 @@
 /* Páginas internas: Servicios, Consejos, Contacto — alineado con inicio + Paper Ground */
 
 :root {
-    --paper: #fdf4e3;
+    --paper: #ffffff;
     --ink: #1a2838;
     --ink-muted: #5c6b7a;
     --brand: #1a6fd4;
@@ -9,6 +9,12 @@
     --card: #ffffff;
     --line: rgba(26, 40, 56, 0.08);
     --shadow-soft: 0 14px 40px rgba(26, 40, 56, 0.07);
+}
+
+body.page-servicios,
+body.page-consejos,
+body.page-contacto {
+    background-color: #ffffff !important;
 }
 
 /* —— Hero / banner (misma altura que inicio: pantalla completa) —— */
@@ -42,17 +48,17 @@ body.page-contacto .header-banner .banner {
 }
 
 body.page-servicios .header-banner .banner {
-    background-image: url("../img/familia.jpg");
+    background-image: url("../img/familia.jpg") !important;
     background-position: right center;
 }
 
 body.page-consejos .header-banner .banner {
-    background-image: url("../img/Consejos.png");
+    background-image: url("../img/Consejos.png") !important;
     background-position: center;
 }
 
 body.page-contacto .header-banner .banner {
-    background-image: url("../img/profesional.jpg");
+    background-image: url("../img/profesional.jpg") !important;
     background-position: 70% 30%;
 }
 

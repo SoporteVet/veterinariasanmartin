@@ -37,12 +37,12 @@
 }
 
 /* Banner interno (servicios, consejos, contacto) */
-.banner .banner-label,
-.banner .banner-heading,
-.banner .banner-divider,
-.banner .banner-description,
-.banner .banner-features,
-.banner .banner-cta {
+.header-banner .banner:not(.banner-text-play) .banner-label,
+.header-banner .banner:not(.banner-text-play) .banner-heading,
+.header-banner .banner:not(.banner-text-play) .banner-divider,
+.header-banner .banner:not(.banner-text-play) .banner-description,
+.header-banner .banner:not(.banner-text-play) .banner-features,
+.header-banner .banner:not(.banner-text-play) .banner-cta {
     opacity: 0;
     transform: translateY(20px);
 }
@@ -129,12 +129,12 @@
         transition: none !important;
     }
 
-    .banner .banner-label,
-    .banner .banner-heading,
-    .banner .banner-divider,
-    .banner .banner-description,
-    .banner .banner-features,
-    .banner .banner-cta,
+    .header-banner .banner .banner-label,
+    .header-banner .banner .banner-heading,
+    .header-banner .banner .banner-divider,
+    .header-banner .banner .banner-description,
+    .header-banner .banner .banner-features,
+    .header-banner .banner .banner-cta,
     .hero-slide-content .hero-headline,
     .hero-slide-content .hero-divider,
     .hero-slide-content .hero-tagline,
