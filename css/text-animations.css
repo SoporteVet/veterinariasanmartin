@@ -1,0 +1,151 @@
+/* Animaciones de texto — Veterinaria San Martín de Porres */
+
+@keyframes textRevealIn {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroTextIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+}
+
+.text-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Banner interno (servicios, consejos, contacto) */
+.banner .banner-label,
+.banner .banner-heading,
+.banner .banner-divider,
+.banner .banner-description,
+.banner .banner-features,
+.banner .banner-cta {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.banner.banner-text-play .banner-label {
+    animation: textRevealIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.04s both;
+}
+
+.banner.banner-text-play .banner-heading {
+    animation: textRevealIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.banner.banner-text-play .banner-divider {
+    animation: textRevealIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.banner.banner-text-play .banner-description {
+    animation: textRevealIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+.banner.banner-text-play .banner-features {
+    animation: textRevealIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+
+.banner.banner-text-play .banner-cta {
+    animation: textRevealIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+}
+
+/* Hero carrusel (inicio) */
+.hero-slide-content .hero-headline,
+.hero-slide-content .hero-divider,
+.hero-slide-content .hero-tagline,
+.hero-slide-content .btn-hero-cta {
+    opacity: 0;
+    transform: translateY(26px);
+}
+
+.swiper-slide.hero-text-play .hero-headline {
+    animation: heroTextIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.swiper-slide.hero-text-play .hero-divider {
+    animation: heroTextIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+.swiper-slide.hero-text-play .hero-tagline {
+    animation: heroTextIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+.swiper-slide.hero-text-play .btn-hero-cta {
+    animation: heroTextIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both;
+}
+
+/* Menú lateral: textos al abrir */
+.side-menu.open.side-menu--text-in .side-menu__title {
+    animation: textRevealIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.side-menu.open.side-menu--text-in .side-menu-list li:nth-child(1) .side-menu-link {
+    animation: textRevealIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+.side-menu.open.side-menu--text-in .side-menu-list li:nth-child(2) .side-menu-link {
+    animation: textRevealIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.side-menu.open.side-menu--text-in .side-menu-list li:nth-child(3) .side-menu-link {
+    animation: textRevealIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.side-menu.open.side-menu--text-in .side-menu-list li:nth-child(4) .side-menu-link {
+    animation: textRevealIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.side-menu:not(.side-menu--text-in) .side-menu-link,
+.side-menu:not(.open) .side-menu__title {
+    animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .banner .banner-label,
+    .banner .banner-heading,
+    .banner .banner-divider,
+    .banner .banner-description,
+    .banner .banner-features,
+    .banner .banner-cta,
+    .hero-slide-content .hero-headline,
+    .hero-slide-content .hero-divider,
+    .hero-slide-content .hero-tagline,
+    .hero-slide-content .btn-hero-cta {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .side-menu.open.side-menu--text-in .side-menu__title,
+    .side-menu.open.side-menu--text-in .side-menu-link {
+        animation: none !important;
+    }
+}

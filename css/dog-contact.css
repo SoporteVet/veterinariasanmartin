@@ -60,15 +60,20 @@
 .dog-contact__illustration {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
     overflow: visible;
-    transform-origin: 50% 100%;
-    animation: peekIn 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: 50% 92%;
+    animation:
+        dogFade 0.6s ease both,
+        dogIdle 3.2s ease-in-out 0.7s infinite;
+    pointer-events: none;
 }
 
 .dog-contact__tail {
     transform-box: fill-box;
-    transform-origin: 8% 60%;
+    transform-origin: 8% 74%;
     will-change: transform;
 }
 
@@ -119,10 +124,62 @@
     animation: blink 5.1s ease-in-out 1s infinite;
 }
 
-.dog-contact__paw-tag {
-    filter: drop-shadow(0 1px 1px rgba(10, 53, 102, 0.24));
+.dog-contact__body {
     transform-box: fill-box;
-    transform-origin: center;
+    transform-origin: 50% 100%;
+    animation: breathe 3s ease-in-out infinite;
+}
+
+.dog-contact__tongue {
+    --dog-contact-tongue-rest: 1;
+    --dog-contact-tongue-stretch: 1.055;
+    --dog-contact-tongue-shift: 0px;
+    transform-box: fill-box;
+    transform-origin: 50% 0%;
+    animation: pant 900ms ease-in-out infinite;
+    transition: filter 180ms ease;
+}
+
+.dog-contact__stetho-bell {
+    transform-box: fill-box;
+    transform-origin: 50% 0%;
+    animation: stethoSwing 2.8s ease-in-out infinite;
+}
+
+.dog-contact__paw {
+    transform-box: fill-box;
+    transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dog-contact__paw--left {
+    transform-origin: 82% 92%;
+}
+
+.dog-contact__paw--right {
+    transform-origin: 18% 92%;
+}
+
+.dog-contact__coat-paw {
+    filter: drop-shadow(0 1px 1px rgba(10, 53, 102, 0.2));
+}
+
+.dog-contact__coat-shine {
+    animation: coatGleam 4.6s ease-in-out infinite;
+}
+
+.dog-contact__dog:hover .dog-contact__tail--wag {
+    animation-duration: 420ms;
+}
+
+.dog-contact__dog:hover .dog-contact__tongue {
+    --dog-contact-tongue-rest: 1.09;
+    --dog-contact-tongue-stretch: 1.145;
+    --dog-contact-tongue-shift: 2px;
+    filter: saturate(1.08);
+}
+
+.dog-contact__dog:hover .dog-contact__paw--left {
+    animation: pawWave 680ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .dog-contact__speech-bubble {
@@ -440,6 +497,71 @@ body:has(#martina-chat-panel.is-open) .dog-contact {
     transform: translateY(12px);
 }
 
+@keyframes pant {
+    0%,
+    100% {
+        transform: translateY(var(--dog-contact-tongue-shift)) scaleY(var(--dog-contact-tongue-rest));
+    }
+
+    50% {
+        transform: translateY(calc(var(--dog-contact-tongue-shift) + 2px))
+            scaleY(var(--dog-contact-tongue-stretch));
+    }
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(1.015);
+    }
+}
+
+@keyframes stethoSwing {
+    0%,
+    100% {
+        transform: rotate(-2.5deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes pawWave {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    32% {
+        transform: translateY(-9px) rotate(-12deg);
+    }
+
+    62% {
+        transform: translateY(-5px) rotate(8deg);
+    }
+
+    82% {
+        transform: translateY(-7px) rotate(-5deg);
+    }
+}
+
+@keyframes coatGleam {
+    0%,
+    72%,
+    100% {
+        opacity: 0.46;
+    }
+
+    80% {
+        opacity: 0.82;
+    }
+}
+
 @keyframes tailWag {
     0%,
     100% {
@@ -481,6 +603,27 @@ body:has(#martina-chat-panel.is-open) .dog-contact {
 
     45% {
         transform: scaleY(0.08);
+    }
+}
+
+@keyframes dogFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes dogIdle {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-3.5deg) scale(1);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(3.5deg) scale(1.03);
     }
 }
 
@@ -604,6 +747,11 @@ body:has(#martina-chat-panel.is-open) .dog-contact {
     .dog-contact__ear--left,
     .dog-contact__ear--right,
     .dog-contact__eyes--blink,
+    .dog-contact__body,
+    .dog-contact__tongue,
+    .dog-contact__stetho-bell,
+    .dog-contact__paw,
+    .dog-contact__coat-shine,
     .dog-contact__speech-bubble,
     .dog-contact__card,
     .dog-contact__card-close,
@@ -613,6 +761,8 @@ body:has(#martina-chat-panel.is-open) .dog-contact {
     }
 
     .dog-contact__dog:hover .dog-contact__head--tilt,
+    .dog-contact__dog:hover .dog-contact__tongue,
+    .dog-contact__dog:hover .dog-contact__paw--left,
     .dog-contact__action:hover {
         transform: none;
     }

@@ -1,61 +1,99 @@
 // Mobile Navigation Toggle
 const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
 const sideMenu = document.querySelector('.side-menu');
+const sideMenuBackdrop = document.getElementById('side-menu-backdrop');
+const sideMenuClose = document.querySelector('.side-menu__close');
 const body = document.body;
 
-// Function to open menu
-function openMenu() {
-    sideMenu.classList.add('open');
-    sideMenu.classList.remove('close');
-    body.style.overflow = 'hidden'; // Prevent background scrolling
+function setMenuOpenState(isOpen) {
+    if (!sideMenu) {
+        return;
+    }
+
+    sideMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+    if (mobileNavToggle) {
+        mobileNavToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    if (sideMenuBackdrop) {
+        sideMenuBackdrop.hidden = !isOpen;
+        sideMenuBackdrop.classList.toggle('is-visible', isOpen);
+    }
 }
 
-// Function to close menu
+function openMenu() {
+    if (!sideMenu) {
+        return;
+    }
+
+    sideMenu.classList.remove('side-menu--text-in');
+    sideMenu.style.display = 'flex';
+    sideMenu.classList.remove('close');
+    requestAnimationFrame(() => {
+        sideMenu.classList.add('open');
+        requestAnimationFrame(() => {
+            sideMenu.classList.add('side-menu--text-in');
+        });
+    });
+    setMenuOpenState(true);
+    body.style.overflow = 'hidden';
+}
+
 function closeMenu() {
+    if (!sideMenu) {
+        return;
+    }
+
     sideMenu.classList.add('close');
-    sideMenu.classList.remove('open');
-    body.style.overflow = 'auto'; // Restore scrolling
-    setTimeout(() => {
+    sideMenu.classList.remove('open', 'side-menu--text-in');
+    setMenuOpenState(false);
+    body.style.overflow = '';
+
+    window.setTimeout(() => {
         if (sideMenu.classList.contains('close')) {
             sideMenu.style.display = 'none';
         }
-    }, 300);
+    }, 320);
 }
 
-// Toggle menu on button click
+function toggleMenu() {
+    if (!sideMenu) {
+        return;
+    }
+
+    if (sideMenu.classList.contains('open')) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
+}
+
 if (mobileNavToggle) {
-    mobileNavToggle.addEventListener('click', function() {
-        if (sideMenu.classList.contains('open')) {
-            closeMenu();
-        } else {
-            sideMenu.style.display = 'flex';
-            setTimeout(openMenu, 10);
-        }
-    });
-    
-    // Add touch event for better mobile experience
-    mobileNavToggle.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        if (sideMenu.classList.contains('open')) {
-            closeMenu();
-        } else {
-            sideMenu.style.display = 'flex';
-            setTimeout(openMenu, 10);
-        }
-    });
+    mobileNavToggle.setAttribute('aria-expanded', 'false');
+    mobileNavToggle.addEventListener('click', toggleMenu);
 }
 
-// Close menu when clicking on menu links
-const menuLinks = document.querySelectorAll('.side-menu-list a');
-menuLinks.forEach(link => {
+if (sideMenuClose) {
+    sideMenuClose.addEventListener('click', closeMenu);
+}
+
+if (sideMenuBackdrop) {
+    sideMenuBackdrop.addEventListener('click', closeMenu);
+}
+
+document.querySelectorAll('.side-menu-list a').forEach((link) => {
     link.addEventListener('click', closeMenu);
 });
 
-// Close menu when clicking outside
-document.addEventListener('click', function(e) {
-    if (sideMenu.classList.contains('open') && 
-        !sideMenu.contains(e.target) && 
-        !mobileNavToggle.contains(e.target)) {
+document.addEventListener('click', function (e) {
+    if (
+        sideMenu &&
+        sideMenu.classList.contains('open') &&
+        !sideMenu.contains(e.target) &&
+        mobileNavToggle &&
+        !mobileNavToggle.contains(e.target)
+    ) {
         closeMenu();
     }
 });
@@ -138,6 +176,16 @@ if (testimonioCards.length > 0) {
     showTestimonio(0);
 }
 
+function playHeroSlideText(slideEl) {
+    if (!slideEl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    slideEl.classList.remove('hero-text-play');
+    void slideEl.offsetWidth;
+    slideEl.classList.add('hero-text-play');
+}
+
 // Hero Carousel Swiper
 const heroSwiperEl = document.querySelector('.hero-swiper');
 if (heroSwiperEl) {
@@ -154,6 +202,14 @@ if (heroSwiperEl) {
         pagination: {
             el: '.hero-swiper-pagination',
             clickable: true,
+        },
+        on: {
+            init(swiper) {
+                playHeroSlideText(swiper.slides[swiper.activeIndex]);
+            },
+            slideChangeTransitionStart(swiper) {
+                playHeroSlideText(swiper.slides[swiper.activeIndex]);
+            },
         },
     });
 }
@@ -256,32 +312,91 @@ function animateCounters() {
     });
 }
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
+const TEXT_REVEAL_SECTIONS = [
+    '.quienes-somos',
+    '.nuestra-vision-objetivos',
+    '.doctores-section',
+    '.testimonios-section',
+    '.Nuestra_Experiencia',
+    '.Servicios',
+    '.quick-tips-section',
+    '.main-advice-section',
+    '.categories-section',
+    '.stories-section',
+    '.additional-info-section',
+    '.contact-section',
+    '.map-section',
+    '.social-section',
+].join(', ');
+
+function markTextRevealElements() {
+    document.querySelectorAll(TEXT_REVEAL_SECTIONS).forEach((section) => {
+        section.querySelectorAll('h1, h2, h3, h4, p, .banner-features li, .feature-text h4, .feature-text p').forEach((el) => {
+            if (el.closest('footer, .side-menu, .navbar-v2, .swiper-pagination, .swiper-button-next, .swiper-button-prev')) {
+                return;
+            }
+            el.classList.add('text-reveal');
+        });
+    });
+}
+
+function initBannerTextAnimations() {
+    document.querySelectorAll('.banner').forEach((banner) => {
+        if (prefersReducedMotion) {
+            banner.classList.add('banner-text-play');
+            return;
+        }
+
+        requestAnimationFrame(() => {
+            banner.classList.add('banner-text-play');
+        });
+    });
+}
+
+function initScrollTextReveals() {
+    markTextRevealElements();
+
+    if (prefersReducedMotion) {
+        document.querySelectorAll('.text-reveal').forEach((el) => {
+            el.classList.add('is-visible');
+        });
+        return;
+    }
+
+    const sectionObserverOptions = {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px',
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+
             if (entry.target.classList.contains('experiencia-stats')) {
                 animateCounters();
             }
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
 
-// Observe elements for animation
-const animatedElements = document.querySelectorAll('.quienes-somos, .doctores-section, .testimonios-section, .Nuestra_Experiencia, .experiencia-stats');
-animatedElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
+            const texts = entry.target.querySelectorAll('.text-reveal:not(.is-visible)');
+            texts.forEach((el, index) => {
+                el.style.setProperty('--reveal-delay', `${Math.min(index * 0.07, 0.42)}s`);
+                el.classList.add('is-visible');
+            });
+
+            sectionObserver.unobserve(entry.target);
+        });
+    }, sectionObserverOptions);
+
+    document.querySelectorAll(`${TEXT_REVEAL_SECTIONS}, .experiencia-stats`).forEach((section) => {
+        sectionObserver.observe(section);
+    });
+}
+
+initBannerTextAnimations();
+initScrollTextReveals();
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

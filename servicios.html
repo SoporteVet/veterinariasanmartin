@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="css/servicios.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/inner-pages.css?v=18">
-    <link rel="stylesheet" href="css/dog-contact.css?v=3">
+    <link rel="stylesheet" href="css/dog-contact.css?v=13">
+    <link rel="stylesheet" href="css/side-menu.css?v=1">
+    <link rel="stylesheet" href="css/text-animations.css?v=1">
     <link rel="stylesheet" href="css/footer.css?v=6">
     <link rel="stylesheet" href="css/mobile-logo-hide.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
@@ -24,10 +26,10 @@
                 </a>
                 <nav class="navbar-v2-nav" aria-label="Navegación principal">
                     <ul class="navbar-v2-list">
-                        <li><a href="index.html" class="navbar-v2-link">Inicio</a></li>
-                        <li><a href="servicios.html" class="navbar-v2-link active">Servicios</a></li>
-                        <li><a href="consejos.html" class="navbar-v2-link">Consejos para tu mascota</a></li>
-                        <li><a href="contacto.html" class="navbar-v2-link">Contáctanos</a></li>
+                        <li><a href="index.html" class="navbar-v2-link"><span class="navbar-v2-link-icon" aria-hidden="true"><i class="fas fa-house"></i></span><span class="navbar-v2-link-label">Inicio</span></a></li>
+                        <li><a href="servicios.html" class="navbar-v2-link active"><span class="navbar-v2-link-icon" aria-hidden="true"><i class="fas fa-stethoscope"></i></span><span class="navbar-v2-link-label">Servicios</span></a></li>
+                        <li><a href="consejos.html" class="navbar-v2-link"><span class="navbar-v2-link-icon" aria-hidden="true"><i class="fas fa-lightbulb"></i></span><span class="navbar-v2-link-label">Consejos</span></a></li>
+                        <li><a href="contacto.html" class="navbar-v2-link"><span class="navbar-v2-link-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span><span class="navbar-v2-link-label">Contacto</span></a></li>
                     </ul>
                 </nav>
                 <button class="mobile-nav-toggle navbar-v2-toggle" aria-label="Abrir menú">
@@ -54,12 +56,19 @@
             </div>
         </section>
     </div>
-        <nav class="side-menu">
+        <div class="side-menu-backdrop" id="side-menu-backdrop" hidden></div>
+        <nav class="side-menu" id="side-menu" aria-label="Menú principal" aria-hidden="true">
+            <div class="side-menu__header">
+                <p class="side-menu__title">Menú</p>
+                <button type="button" class="side-menu__close" aria-label="Cerrar menú">
+                    <i class="fas fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
             <ul class="side-menu-list">
-                <li><a href="index.html" class="enlace inicio"><img src="img/home.png" alt="Inicio" class="menu-icon"> Inicio</a></li>
-                <li><a href="servicios.html" class="enlace inicio active"><img src="img/perrito_icon.png" alt="Servicios" class="menu-icon"> Servicios</a></li>
-                <li><a href="consejos.html" class="enlace inicio"><img src="img/consejos (2).png" alt="Consejos" class="menu-icon"> Consejos</a></li>
-                <li><a href="contacto.html" class="enlace inicio"><img src="img/contacto (2).png" alt="Contáctanos" class="menu-icon"> Contacto</a></li>
+                <li><a href="index.html" class="side-menu-link"><span class="side-menu-link__icon side-menu-link__icon--home"><i class="fas fa-house" aria-hidden="true"></i></span><span class="side-menu-link__label">Inicio</span></a></li>
+                <li><a href="servicios.html" class="side-menu-link active"><span class="side-menu-link__icon side-menu-link__icon--services"><i class="fas fa-stethoscope" aria-hidden="true"></i></span><span class="side-menu-link__label">Servicios</span></a></li>
+                <li><a href="consejos.html" class="side-menu-link"><span class="side-menu-link__icon side-menu-link__icon--tips"><i class="fas fa-lightbulb" aria-hidden="true"></i></span><span class="side-menu-link__label">Consejos</span></a></li>
+                <li><a href="contacto.html" class="side-menu-link"><span class="side-menu-link__icon side-menu-link__icon--contact"><i class="fas fa-envelope" aria-hidden="true"></i></span><span class="side-menu-link__label">Contacto</span></a></li>
             </ul>
         </nav>
         <section class="Servicios" id="servicios-contenido">
@@ -165,6 +174,6 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel" data-presets="react" src="javascript/dog-contact.jsx?v=8"></script>
+    <script type="text/babel" data-presets="react" src="javascript/dog-contact.jsx?v=20"></script>
     </body>
 </html>
