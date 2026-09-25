@@ -228,59 +228,62 @@ if (navbarV2 && scrollSection) {
     onScroll();
 }
 
-// Swiper Configuration
-var swiper = new Swiper(".slide-content", {
-    slidesPerView: 1, // Default to 1 for mobile-first
-    spaceBetween: 0,
-    loop: false,
-    centeredSlides: false,
-    autoplay: {
-        delay: 10000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-    },
-    speed: 800,
-    grabCursor: true,
-    touchRatio: 1,
-    touchAngle: 45,
-    threshold: 5,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        dynamicBullets: true,
-        renderBullet: function (index, className) {
-            return '<span class="' + className + '"></span>';
+// Swiper Configuration (solo inicio — evita error en páginas sin Swiper)
+const slideContentEl = document.querySelector('.slide-content');
+if (typeof Swiper !== 'undefined' && slideContentEl) {
+    new Swiper('.slide-content', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        centeredSlides: false,
+        autoplay: {
+            delay: 10000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
         },
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-        0: {
-            slidesPerView: 1,
-            spaceBetween: 0,
+        speed: 800,
+        grabCursor: true,
+        touchRatio: 1,
+        touchAngle: 45,
+        threshold: 5,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+            renderBullet: function (index, className) {
+                return '<span class="' + className + '"></span>';
+            },
         },
-        480: {
-            slidesPerView: 1,
-            spaceBetween: 0,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 25,
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+            },
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 25,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
         },
-        1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-        },
-    },
-    touchStartPreventDefault: false,
-    touchMoveStopPropagation: false,
-    simulateTouch: true,
-    allowTouchMove: true,
-    resistance: true,
-    resistanceRatio: 0.85,
-});
+        touchStartPreventDefault: false,
+        touchMoveStopPropagation: false,
+        simulateTouch: true,
+        allowTouchMove: true,
+        resistance: true,
+        resistanceRatio: 0.85,
+    });
+}
 
 // Counter Animation for Stats
 function animateCounters() {
